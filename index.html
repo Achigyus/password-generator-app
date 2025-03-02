@@ -7,26 +7,61 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   
   <title>Frontend Mentor | Password generator app</title>
+  <link rel="stylesheet" href="dist/index.css">
 </head>
 <body>
 
   <main class="main">
-    
+    <div class="container">
+      <h1 class="password_gen_app">Password Generator</h1>
+      <div class="password_gen_app_card_wrap">
+
+        <div class="password_gen_app_top">
+          <p class="password_gen_app_top_password">P4$5W0rD!</p>
+          <button class="password_gen_app_top_password_copy">
+            <img src="./assets/images/icon-copy.svg" alt="copy icon" class="password_gen_app_top_password_copy_img">
+          </button>
+        </div>
+
+        <form class="password_gen_app_bottom">
+          <div class="password_gen_app_char_length">
+            <div class="password_gen_app_char_length_text">
+              <label for="password_gen_app_char_length_slider">Character Length</label>
+              <p id="password_gen_app_char_length_text"></p>
+            </div>
+            <input type="range" id="password_gen_app_char_length_slider" name="vol" min="5" max="15" step="1" value="10">
+          </div>
+
+          <div class="password_gen_app_strength_wrap">
+            <input type="checkbox" name="password_gen_app_strength_uppercase" id="password_gen_app_strength_uppercase">
+            <label for="password_gen_app_strength_uppercase" class="password_gen_app_strength_uppercase">Include Uppercase Letters</label>
+            <input type="checkbox" name="password_gen_app_strength_lowercase" id="password_gen_app_strength_lowercase">
+            <label for="password_gen_app_strength_lowercase" class="password_gen_app_strength_lowercase">Include Lowercase Letters</label>
+            <input type="checkbox" name="password_gen_app_strength_numbers" id="password_gen_app_strength_numbers">
+            <label for="password_gen_app_strength_numbers" class="password_gen_app_strength_numbers">Include Numbers</label>
+            <input type="checkbox" name="password_gen_app_strength_symbols" id="password_gen_app_strength_symbols">
+            <label for="password_gen_app_strength_symbols" class="password_gen_app_strength_symbols">Include Symbols</label>
+          </div>
+
+          <div class="password_gen_strength_ind">
+            <p class="password_gen_strength_text">Strength</p>
+            <div class="password_gen_strength_ind_wrap">
+              <p class="password_gen_strength"></p>
+              <div class="password_gen_strength_ind_boxes_wrap">
+                <div class="password_gen_strength_ind_box"></div>
+                <div class="password_gen_strength_ind_box"></div>
+                <div class="password_gen_strength_ind_box"></div>
+                <div class="password_gen_strength_ind_box"></div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Generate <img src="./assets/images/icon-arrow-right.svg" alt="arrow"></button>
+        </form>
+      </div>
+    </div>
   </main>
-  Password Generator
-
-  P4$5W0rD!
-
-  Character Length
-
-  Include Uppercase Letters
-  Include Lowercase Letters
-  Include Numbers
-  Include Symbols
-
-  Strength
-
-  Generate
-
+  
+  <script src="./dist/index.js"></script>
 </body>
 </html>
