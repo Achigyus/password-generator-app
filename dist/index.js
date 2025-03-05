@@ -1,13 +1,8 @@
 "use strict";
 let form = document.querySelector('form');
 let slider = document.querySelector('input[type="range"]');
-let passwordSelection = {
-    include_uppercase: false,
-    include_lowercase: false,
-    include_numbers: false,
-    include_symbols: false,
-};
-let passwordSelectionDynamic = {
+let passwordOptions;
+passwordOptions = {
     include_uppercase: false,
     include_lowercase: false,
     include_numbers: false,
@@ -23,9 +18,15 @@ function handleClick(e) {
     console.log(e);
     console.log(target.name);
     console.log(target.checked);
-    if (target.name in passwordSelection) {
-        passwordSelection[target.name] = Boolean(target.checked);
+    if (target.name === 'include_uppercase') {
+        console.log(passwordOptions['include_uppercase']);
+        let converted = Boolean(target.checked);
+        console.log('type of is', typeof (converted));
+        passwordOptions['include_uppercase'] = converted;
     }
+    else {
+        console.log('no match');
+    }
+    console.log(passwordOptions);
 }
-console.log(passwordSelection);
 form === null || form === void 0 ? void 0 : form.addEventListener('input', handleClick);
