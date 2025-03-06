@@ -67,3 +67,30 @@ body {
 .fw700 {
   font-weight: 700;
 }
+
+.password_gen_strength_ind_box {
+  border: 2px solid #E6E5EA;
+  width: 10px;
+  height: 28px;
+}
+
+.too_weak div:nth-child(1) {
+  background: red;
+}
+
+.weak div:nth-child(1) {
+  background: orange;
+}
+.weak div:nth-child(2) {
+  background: orange;
+}
+
+.medium div:nth-child(1) {
+  background: lime;
+}
+.medium div:nth-child(2) {
+  background: lime;
+}
+.medium div:nth-child(3) {
+  background: lime;
+}
