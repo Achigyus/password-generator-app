@@ -75,22 +75,35 @@ body {
 }
 
 .too_weak div:nth-child(1) {
-  background: red;
+  background: #F64A4A;
 }
 
 .weak div:nth-child(1) {
-  background: orange;
+  background: #FB7C58;
 }
 .weak div:nth-child(2) {
-  background: orange;
+  background: #FB7C58;
 }
 
 .medium div:nth-child(1) {
-  background: lime;
+  background: #F8CD65;
 }
 .medium div:nth-child(2) {
-  background: lime;
+  background: #F8CD65;
 }
 .medium div:nth-child(3) {
-  background: lime;
+  background: #F8CD65;
+}
+
+.strong div:nth-child(1) {
+  background: #A4FFAF;
+}
+.strong div:nth-child(2) {
+  background: #A4FFAF;
+}
+.strong div:nth-child(3) {
+  background: #A4FFAF;
+}
+.strong div:nth-child(4) {
+  background: #A4FFAF;
 }

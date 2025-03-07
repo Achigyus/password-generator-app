@@ -1,6 +1,9 @@
 "use strict";
 let form = document.querySelector('form');
 let slider = document.querySelector('input[type="range"]');
+let indicatorWrapper = document.querySelector('#password_gen_strength_ind_boxes_wrap');
+let pStrength = document.getElementById('password_gen_strength');
+let pWordTop = document.getElementById('password_gen_app_top_password');
 let passwordOptions;
 passwordOptions = {
     include_uppercase: false,
@@ -40,15 +43,25 @@ function checkStrength(e) {
     if (passwordOptions.include_numbers)
         charset += '0123456789';
     if (passwordOptions.include_symbols)
-        charset += '!@#$%^&*()_+';
+        charset += '!@#$%^&*()_+<>[]{}';
     for (let i = 0; i < length; i++) {
         password += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    if (pWordTop) {
+        pWordTop.textContent = password;
     }
     console.log('Generated password:', password);
     return password;
 }
 function updateStrength() {
     let strength = 0;
+    let strengthObject = {
+        '0': '',
+        '1': 'too_weak',
+        '2': 'weak',
+        '3': 'medium',
+        '4': 'strong'
+    };
     if (passwordOptions.include_uppercase)
         strength++;
     if (passwordOptions.include_lowercase)
@@ -58,6 +71,15 @@ function updateStrength() {
     if (passwordOptions.include_symbols)
         strength++;
     console.log('Updated strength:', strength);
+    let stringStrength = strength.toString();
+    console.log('Updated strength:', strengthObject[`${stringStrength}`]);
+    indicatorWrapper === null || indicatorWrapper === void 0 ? void 0 : indicatorWrapper.classList.remove('too_weak', 'weak', 'medium', 'strong');
+    if (indicatorWrapper && strengthObject[stringStrength]) {
+        indicatorWrapper.classList.add(strengthObject[stringStrength]);
+    }
+    if (pStrength) {
+        pStrength.textContent = strengthObject[stringStrength].replace('_', ' ');
+    }
 }
 form === null || form === void 0 ? void 0 : form.addEventListener('input', handleClick);
 form === null || form === void 0 ? void 0 : form.addEventListener('submit', checkStrength);
