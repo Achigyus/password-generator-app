@@ -366,5 +366,28 @@ body {
     margin: auto;
     padding: 8.31rem 0 12.25rem 0;
     min-height: 100vh;
+    gap: 1.94rem;
+  }
+  .password_gen_app_card_wrap {
+    gap: 1.5rem;
+  }
+  .password_gen_app_top {
+    padding: 1.25rem 2rem;
+  }
+  .password_gen_app_bottom {
+    padding: 1.5rem 2rem 2rem 2rem;
+    gap: 2rem;
+  }
+  .password_gen_app_char_length {
+    gap: 1rem;
+  }
+  .password_gen_app_strength_wrap {
+    gap: 1.25rem;
+  }
+  .password_gen_strength_ind {
+    padding: 1.25rem 2rem;
+  }
+  .submit_btn {
+    padding: 1.25rem;
   }
 }
