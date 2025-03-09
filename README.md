@@ -11,6 +11,7 @@ This is a solution to the [Password generator app challenge on Frontend Mentor](
 - [My process](#my-process)
   - [Built with](#built-with)
 - [Author](#author)
+- [Setup](#Setup)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -49,3 +50,11 @@ Users should be able to:
 
 - Website - [Achigyus](https://github.com/Achigyus)
 - Frontend Mentor - [@Achigyus](https://www.frontendmentor.io/profile/Achigyus)
+
+## Setup
+- Download the project files
+- Extract them and navigate into the folder
+- Open a terminal in the folder and run npm install to get all dependencies
+- Use live server to serve the project
+- Run npm run watch to watch any changes in index.ts
+- Run gulp to check and compile changes in index.sass

@@ -4,6 +4,8 @@ let slider = document.querySelector('input[type="range"]');
 let indicatorWrapper = document.querySelector('#password_gen_strength_ind_boxes_wrap');
 let pStrength = document.getElementById('password_gen_strength');
 let pWordTop = document.getElementById('password_gen_app_top_password');
+let passwordLength = document.getElementById('password_gen_app_char_length_p');
+let copyBtn = document.getElementById('password_gen_app_top_password_copy');
 let passwordOptions;
 passwordOptions = {
     include_uppercase: false,
@@ -11,10 +13,32 @@ passwordOptions = {
     include_numbers: false,
     include_symbols: false,
 };
-console.log(form, slider === null || slider === void 0 ? void 0 : slider.value);
-slider === null || slider === void 0 ? void 0 : slider.addEventListener('input', () => {
+function updatePWordLength() {
     console.log(slider === null || slider === void 0 ? void 0 : slider.value);
-});
+    if (passwordLength) {
+        passwordLength.textContent = ((slider === null || slider === void 0 ? void 0 : slider.value) || '0');
+        calcValue();
+    }
+    else {
+        console.log(passwordLength);
+    }
+}
+function copyPWord() {
+    if (copyBtn) {
+        let text = (pWordTop === null || pWordTop === void 0 ? void 0 : pWordTop.textContent) || '';
+        navigator.clipboard.writeText(text);
+        copyBtn.classList.add('active');
+        setTimeout(() => {
+            copyBtn === null || copyBtn === void 0 ? void 0 : copyBtn.classList.remove('active');
+        }, 2000);
+    }
+}
+function calcValue() {
+    if (slider) {
+        let valuePercentage = ((parseInt(slider.value) - parseInt(slider.min)) / (parseInt(slider.max) - parseInt(slider.min))) * 100;
+        slider.style.background = `linear-gradient(to right, #A4FFAF ${valuePercentage}%, #18171F ${valuePercentage}%)`;
+    }
+}
 function handleClick(e) {
     console.log('clicked');
     let target = e.target;
@@ -47,8 +71,13 @@ function checkStrength(e) {
     for (let i = 0; i < length; i++) {
         password += charset.charAt(Math.floor(Math.random() * charset.length));
     }
+    if (!password) {
+        console.log('No password generated');
+        return;
+    }
     if (pWordTop) {
         pWordTop.textContent = password;
+        pWordTop.classList.add('active');
     }
     console.log('Generated password:', password);
     return password;
@@ -83,3 +112,5 @@ function updateStrength() {
 }
 form === null || form === void 0 ? void 0 : form.addEventListener('input', handleClick);
 form === null || form === void 0 ? void 0 : form.addEventListener('submit', checkStrength);
+copyBtn === null || copyBtn === void 0 ? void 0 : copyBtn.addEventListener('click', copyPWord);
+slider === null || slider === void 0 ? void 0 : slider.addEventListener('input', updatePWordLength);

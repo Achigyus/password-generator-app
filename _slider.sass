@@ -1,0 +1,62 @@
+@use 'variables' as vars
+
+[type='range']
+    appearance: none
+    -webkit-appearance: none
+    width: 100%
+    height: 8px
+    outline: none
+    border-radius: 0
+    border: none
+    background: vars.$very_dark_gray
+
+[type='range']::-webkit-slider-thumb
+    appearance: none
+    width: 28px
+    height: 28px
+    background: vars.$almost_white
+    border-radius: 50%
+    cursor: pointer
+
+[type='range']::-moz-range-thumb
+    appearance: none
+    width: 28px
+    height: 28px
+    background: vars.$almost_white
+    border-radius: 50%
+    cursor: pointer
+
+/***** Focus Styles *****/
+/* Removes default focus */
+input[type="range"]:focus
+    outline: none
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+
+input[type="range"]:active::-webkit-slider-thumb
+    border: 2px solid vars.$neon_green
+    background: vars.$very_dark_gray
+
+/******** Firefox ********/
+input[type="range"]:active::-moz-range-thumb
+    border: 2px solid vars.$neon_green
+    background: vars.$very_dark_gray
+
+input[type="checkbox"]
+    width: 20px
+    height: 20px
+    appearance: none
+    background-color: vars.$dark_gray
+    border: 2px solid vars.$gray
+    cursor: pointer
+    position: relative
+
+input[type="checkbox"]:checked
+    background-color: vars.$neon_green
+    border-color: vars.$neon_green
+    background-image: url('../assets/images/icon-check.svg')
+    background-size: 100%
+    background-position: center
+    background-repeat: no-repeat
+
+

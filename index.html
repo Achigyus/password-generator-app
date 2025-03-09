@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | Password generator app</title>
   <link rel="stylesheet" href="dist/index.css">
 </head>
+
 <body>
 
   <main class="main">
     <div class="container">
-      <h1 class="password_gen_app">Password Generator</h1>
+      <h1 class="password_gen_app fw700">Password Generator</h1>
       <div class="password_gen_app_card_wrap">
 
         <div class="password_gen_app_top">
           <p class="password_gen_app_top_password" id="password_gen_app_top_password">P4$5W0rD!</p>
-          <button class="password_gen_app_top_password_copy">
+          <button class="password_gen_app_top_password_copy" id="password_gen_app_top_password_copy">
+            <p class="password_gen_app_top_password_copy_text fw700">COPIED</p>
             <img src="./assets/images/icon-copy.svg" alt="copy icon" class="password_gen_app_top_password_copy_img">
           </button>
         </div>
@@ -26,27 +29,37 @@
         <form class="password_gen_app_bottom">
           <div class="password_gen_app_char_length">
             <div class="password_gen_app_char_length_text">
-              <label for="password_gen_app_char_length_slider">Character Length</label>
-              <p id="password_gen_app_char_length_text"></p>
+              <label for="password_gen_app_char_length_slider fw700">Character Length</label>
+              <p class="password_gen_app_char_length_p fw700" id="password_gen_app_char_length_p">5</p>
             </div>
-            <input type="range" id="password_gen_app_char_length_slider" name="vol" min="5" max="15" step="1" value="10">
+            <input type="range" id="password_gen_app_char_length_slider" name="vol" min="5" max="15" step="1" value="5">
           </div>
 
           <div class="password_gen_app_strength_wrap">
-            <input type="checkbox" name="include_uppercase" id="include_uppercase">
-            <label for="include_uppercase" class="password_gen_app_strength_uppercase">Include Uppercase Letters</label>
-            <input type="checkbox" name="include_lowercase" id="include_lowercase">
-            <label for="include_lowercase" class="password_gen_app_strength_lowercase">Include Lowercase Letters</label>
-            <input type="checkbox" name="include_numbers" id="include_numbers">
-            <label for="include_numbers" class="password_gen_app_strength_numbers">Include Numbers</label>
-            <input type="checkbox" name="include_symbols" id="include_symbols">
-            <label for="include_symbols" class="password_gen_app_strength_symbols">Include Symbols</label>
+            <div class="label_input_wrap">
+              <input type="checkbox" name="include_uppercase" id="include_uppercase">
+              <label for="include_uppercase" class="password_gen_app_strength_uppercase fw700">Include Uppercase
+                Letters</label>
+            </div>
+            <div class="label_input_wrap">
+              <input type="checkbox" name="include_lowercase" id="include_lowercase">
+              <label for="include_lowercase" class="password_gen_app_strength_lowercase fw700">Include Lowercase
+                Letters</label>
+            </div>
+            <div class="label_input_wrap">
+              <input type="checkbox" name="include_numbers" id="include_numbers">
+              <label for="include_numbers" class="password_gen_app_strength_numbers fw700">Include Numbers</label>
+            </div>
+            <div class="label_input_wrap"><input type="checkbox" name="include_symbols" id="include_symbols">
+              <label for="include_symbols" class="password_gen_app_strength_symbols fw700">Include Symbols</label>
+            </div>
+
           </div>
 
           <div class="password_gen_strength_ind">
-            <p class="password_gen_strength_text">Strength</p>
+            <p class="password_gen_strength_text fw700">STRENGTH</p>
             <div class="password_gen_strength_ind_wrap">
-              <p class="password_gen_strength" id="password_gen_strength"></p>
+              <p class="password_gen_strength fw700" id="password_gen_strength"></p>
               <div class="password_gen_strength_ind_boxes_wrap" id="password_gen_strength_ind_boxes_wrap">
                 <div class="password_gen_strength_ind_box"></div>
                 <div class="password_gen_strength_ind_box"></div>
@@ -56,12 +69,20 @@
             </div>
           </div>
 
-          <button type="submit">Generate <img src="./assets/images/icon-arrow-right.svg" alt="arrow"></button>
+          <button type="submit" class="submit_btn fw700">GENERATE <img src="./assets/images/icon-arrow-right.svg" alt="arrow"></button>
         </form>
       </div>
     </div>
   </main>
-  
+
+  <footer>
+    <div class="attribution fw700">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/Achigyus" target="_blank">Achigyus</a>.
+    </div>
+  </footer>
+
   <script src="./dist/index.js"></script>
 </body>
+
 </html>
