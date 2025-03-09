@@ -6,27 +6,21 @@ let pStrength = document.getElementById('password_gen_strength');
 let pWordTop = document.getElementById('password_gen_app_top_password');
 let passwordLength = document.getElementById('password_gen_app_char_length_p');
 let copyBtn = document.getElementById('password_gen_app_top_password_copy');
-let passwordOptions;
-passwordOptions = {
+let passwordOptions = {
     include_uppercase: false,
     include_lowercase: false,
     include_numbers: false,
     include_symbols: false,
 };
 function updatePWordLength() {
-    console.log(slider === null || slider === void 0 ? void 0 : slider.value);
-    if (passwordLength) {
+    if (slider && passwordLength) {
         passwordLength.textContent = ((slider === null || slider === void 0 ? void 0 : slider.value) || '0');
         calcValue();
     }
-    else {
-        console.log(passwordLength);
-    }
 }
 function copyPWord() {
-    if (copyBtn) {
-        let text = (pWordTop === null || pWordTop === void 0 ? void 0 : pWordTop.textContent) || '';
-        navigator.clipboard.writeText(text);
+    if (copyBtn && (pWordTop === null || pWordTop === void 0 ? void 0 : pWordTop.textContent)) {
+        navigator.clipboard.writeText(pWordTop === null || pWordTop === void 0 ? void 0 : pWordTop.textContent);
         copyBtn.classList.add('active');
         setTimeout(() => {
             copyBtn === null || copyBtn === void 0 ? void 0 : copyBtn.classList.remove('active');
@@ -35,30 +29,22 @@ function copyPWord() {
 }
 function calcValue() {
     if (slider) {
-        let valuePercentage = ((parseInt(slider.value) - parseInt(slider.min)) / (parseInt(slider.max) - parseInt(slider.min))) * 100;
+        let valuePercentage = ((+slider.value - +slider.min) / (+slider.max - +slider.min)) * 100;
         slider.style.background = `linear-gradient(to right, #A4FFAF ${valuePercentage}%, #18171F ${valuePercentage}%)`;
     }
 }
 function handleClick(e) {
-    console.log('clicked');
     let target = e.target;
-    console.log(e);
-    console.log(target.name);
-    console.log(target.checked);
-    if (target.name === 'include_uppercase' || target.name === 'include_lowercase' || target.name === 'include_numbers' || target.name === 'include_symbols') {
+    if (target.name in passwordOptions) {
         let converted = Boolean(target.checked);
-        passwordOptions[`${target.name}`] = target.checked;
+        passwordOptions[target.name] = target.checked;
         updateStrength();
     }
-    else {
-        console.log('no match');
-    }
-    console.log(passwordOptions);
 }
 function checkStrength(e) {
     e.preventDefault();
-    let password = '';
-    let length = parseInt((slider === null || slider === void 0 ? void 0 : slider.value) || '0');
+    if (!slider)
+        return;
     let charset = '';
     if (passwordOptions.include_uppercase)
         charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -68,19 +54,13 @@ function checkStrength(e) {
         charset += '0123456789';
     if (passwordOptions.include_symbols)
         charset += '!@#$%^&*()_+<>[]{}';
-    for (let i = 0; i < length; i++) {
-        password += charset.charAt(Math.floor(Math.random() * charset.length));
-    }
-    if (!password) {
-        console.log('No password generated');
-        return;
-    }
+    if (!charset)
+        return console.log('No password generated');
+    let password = Array.from({ length: +slider.value }, () => charset.charAt(Math.floor(Math.random() * charset.length))).join('');
     if (pWordTop) {
         pWordTop.textContent = password;
         pWordTop.classList.add('active');
     }
-    console.log('Generated password:', password);
-    return password;
 }
 function updateStrength() {
     let strength = 0;
@@ -99,9 +79,7 @@ function updateStrength() {
         strength++;
     if (passwordOptions.include_symbols)
         strength++;
-    console.log('Updated strength:', strength);
     let stringStrength = strength.toString();
-    console.log('Updated strength:', strengthObject[`${stringStrength}`]);
     indicatorWrapper === null || indicatorWrapper === void 0 ? void 0 : indicatorWrapper.classList.remove('too_weak', 'weak', 'medium', 'strong');
     if (indicatorWrapper && strengthObject[stringStrength]) {
         indicatorWrapper.classList.add(strengthObject[stringStrength]);
