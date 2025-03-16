@@ -126,6 +126,7 @@ body
 .label_input_wrap label
     line-height: 1.3
     font-size: clamp(vars.$base_font_size, 2vw, 1.125rem)
+    cursor: pointer
 
 .password_gen_strength_ind
     padding: 0.875rem vars.$base_padding
@@ -140,6 +141,10 @@ body
 
 .password_gen_strength
     font-size: clamp(1.125rem, 2vw, 1.5rem)
+    opacity: 0
+
+.password_gen_strength.active
+    opacity: 1
 
 .password_gen_strength_ind_wrap
     display: flex
@@ -180,6 +185,7 @@ $colors: (too_weak: vars.$red, weak: vars.$orange, medium: vars.$yellow, strong:
     line-height: 1.3
     font-size: clamp(vars.$base_font_size, 2vw, 1.125rem)
     border: 2px solid vars.$neon_green
+    cursor: pointer
 
 .submit_btn:hover, .submit_btn:focus
     background: vars.$dark_gray
